@@ -8,7 +8,7 @@
     <class
         name="edu.wustl.catissuecore.domain.SpecimenProtocol"
         table="CATISSUE_SPECIMEN_PROTOCOL"
-		lazy="true"
+        lazy="true"
     >
 
     <cache usage="read-write" />
@@ -141,7 +141,7 @@
             column="ACTIVITY_STATUS"
             length="50"
         />
-		
+        
           <property
             name="ppidFormat"
             type="string"
@@ -160,7 +160,7 @@
         <joined-subclass
             name="edu.wustl.catissuecore.domain.CollectionProtocol"
             table="CATISSUE_COLLECTION_PROTOCOL"
-			lazy="true"
+            lazy="true"
         >
             <key
                 column="IDENTIFIER"
@@ -175,7 +175,7 @@
         />
 
 
-		<set
+        <set
             name="clinicalDiagnosisCollection"
             table="CATISSUE_CLINICAL_DIAGNOSIS"
             fetch="join" lazy="false"
@@ -354,7 +354,7 @@
                   class="edu.wustl.catissuecore.domain.CollectionProtocolEvent"
             />
     </set>
-	<set
+    <set
             name="childCollectionProtocolCollection"
             table="CATISSUE_COLLECTION_PROTOCOL"
             fetch="join" lazy="false"
@@ -376,7 +376,7 @@
 
         </set>
 
-	    <many-to-one
+        <many-to-one
             name="parentCollectionProtocol"
             class="edu.wustl.catissuecore.domain.CollectionProtocol"
             cascade="none"
@@ -385,7 +385,7 @@
             column="PARENT_CP_ID"
         />
 
-		<property
+        <property
             name="type"
             type="string"
             update="true"
@@ -402,7 +402,7 @@
             length="30"
         />
 
-	  <property
+      <property
             name="studyCalendarEventPoint"
             type="double"
             update="true"
@@ -410,19 +410,12 @@
             column="STUDY_CALENDAR_EVENT_POINT"
             length="50"
         />
-		<property
+        <property
             name="aliquotInSameContainer"
             type="boolean"
             update="true"
             insert="true"
             column="ALIQUOT_IN_SAME_CONTAINER"
-        />
-        <property
-            name="defaultReportSetTo"
-            type="string"
-            update="true"
-            insert="true"
-            column="DEFAULT_REPORTS_SEND_TO"
         />
 
         <property
@@ -441,21 +434,21 @@
             column="IS_EMPI_ENABLE"
         />
 
-		<set name="studyFormContextCollection" table="CATISSUE_CP_STUDYFORMCONTEXT"
-			 inverse="true">
+        <set name="studyFormContextCollection" table="CATISSUE_CP_STUDYFORMCONTEXT"
+             inverse="true">
 
-			<key column="COLLECTION_PROTOCOL_ID" />
+            <key column="COLLECTION_PROTOCOL_ID" />
 
-			<many-to-many column="STUDY_FORM_CONTEXT_ID"
-				class="edu.wustl.catissuecore.domain.StudyFormContext" />
-		</set>
-		
-		<set
+            <many-to-many column="STUDY_FORM_CONTEXT_ID"
+                class="edu.wustl.catissuecore.domain.StudyFormContext" />
+        </set>
+        
+        <set
             name="labelSQLAssociationCollection"
             table="LABELSQLASSOC"
             lazy="false"
             inverse="false"
-			cascade="all"
+            cascade="all"
             order-by="SEQ_ORDER"
         >
 
@@ -467,13 +460,13 @@
                   class="edu.wustl.common.labelSQLApp.domain.LabelSQLAssociation"
               />
         </set>
-		
+        
         </joined-subclass>
 
         <joined-subclass
             name="edu.wustl.catissuecore.domain.DistributionProtocol"
             table="CATISSUE_DISTRIBUTION_PROTOCOL"
-			lazy="true"
+            lazy="true"
         >
             <key
                 column="IDENTIFIER"
@@ -529,6 +522,6 @@
        </joined-subclass>
 
     </class>
-	<query name="getconsentTierCollection">Select sp.consentTierCollection from edu.wustl.catissuecore.domain.SpecimenProtocol sp WHERE sp.id = ?
-	</query>
+    <query name="getconsentTierCollection">Select sp.consentTierCollection from edu.wustl.catissuecore.domain.SpecimenProtocol sp WHERE sp.id = ?
+    </query>
 </hibernate-mapping>
